@@ -2,8 +2,6 @@ package com.example.demotoyota;
 
 import org.apache.commons.codec.binary.Base64;
 
-import java.security.PublicKey;
-
 public class DemoToyotaApplication {
 
   public static void main(String[] args) throws Exception {
