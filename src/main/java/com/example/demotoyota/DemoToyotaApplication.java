@@ -13,11 +13,8 @@ public class DemoToyotaApplication {
     // Some information on the Token
     AuthenticationInput userRequest = new AuthenticationInput("https://fake.url/", "NameOfUser", "OpenHomePage");
 
-    // Id from API
-    PublicKey idAPI = authenticationMechanism.getPublicKey();
-
     // Generate a token after authentication (Auth Controller)
-    String token = authenticationMechanism.generateToken(userRequest.getAuthenticationInput(), idAPI);
+    String token = authenticationMechanism.generateToken(userRequest.getAuthenticationInput());
     System.out.println(token);
 
     // Check the token stored on client to open some page (Auth Middleware)

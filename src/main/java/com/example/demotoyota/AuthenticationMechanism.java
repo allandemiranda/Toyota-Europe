@@ -32,17 +32,13 @@ public class AuthenticationMechanism {
     return rsaPublicKey;
   }
 
-  public String generateToken(Map<String, String> data, PublicKey publicKey) {
-    if (rsaPublicKey.equals(publicKey)) {
-      try {
-        Builder builder = JWT.create().withIssuer("auth0").withExpiresAt(Date.from(Instant.now().plusSeconds(300)));
-        builder.withPayload(data);
-        return builder.sign(algorithm);
-      } catch (JWTCreationException exception) {
-        throw new RuntimeException("Invalid Signing configuration / Couldn't convert Claims.");
-      }
-    } else {
-      return "Wrong API";
+  public String generateToken(Map<String, String> data) {
+    try {
+      Builder builder = JWT.create().withIssuer("auth0").withExpiresAt(Date.from(Instant.now().plusSeconds(300)));
+      builder.withPayload(data);
+      return builder.sign(algorithm);
+    } catch (JWTCreationException exception) {
+      throw new RuntimeException("Invalid Signing configuration / Couldn't convert Claims.");
     }
   }
 
